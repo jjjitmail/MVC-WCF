@@ -1,1 +1,1 @@
-A simple legacy App that using scraping method to retrieve secured data from external source. Using MVC, WCF, DevExpress, XPO, developed in 2012
+A simple legacy App that using scraping method to retrieve secured data from external source (Telfort). Using MVC, WCF, DevExpress, developed in 2012. If you have a valid account at Telfort, this App might still work using your own certificate.
