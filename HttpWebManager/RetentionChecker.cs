@@ -5,23 +5,7 @@ using System.Text;
 using System.Net;
 
 namespace HttpWebManager
-{
-    public class RetentionCheckerInfo
-    {
-        public XpoObjects.Network Network { get; set; }
-        public string MobileNumber { get; set; }
-        public string SIMNumber { get; set; }
-        public DateTime BirthDay { get; set; }
-
-        public RetentionCheckerInfo(XpoObjects.Network Network, string MobileNumber, string SIMNumber, DateTime BirthDay)
-        {
-            this.Network = Network;
-            this.MobileNumber = MobileNumber;
-            this.SIMNumber = SIMNumber;
-            this.BirthDay = BirthDay;
-        }
-    }
-
+{    
     public static class RetentionChecker
     {
         private const string NOT_RETAINABLE = "Het is niet te bepalen of het mobiele nummer te verlengen is";
@@ -47,21 +31,21 @@ namespace HttpWebManager
 
                 switch (objRetentionInfo.Network.Name)
                 {                    
-                    case "Telfort":
+                    case "nnn":
                         try
                         {
                             System.Security.Cryptography.X509Certificates.X509Store store = new System.Security.Cryptography.X509Certificates.X509Store("TrustedPeople",
                                 System.Security.Cryptography.X509Certificates.StoreLocation.LocalMachine);
                             store.Open(System.Security.Cryptography.X509Certificates.OpenFlags.ReadOnly | System.Security.Cryptography.X509Certificates.OpenFlags.OpenExistingOnly);
 
-                            System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificateCollection = store.Certificates.Find(System.Security.Cryptography.X509Certificates.X509FindType.FindBySubjectName, "tft.notify@prolocation.net", false);
+                            System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificateCollection = store.Certificates.Find(System.Security.Cryptography.X509Certificates.X509FindType.FindBySubjectName, "tft.notify@nnn.net", false);
 
                             if (certificateCollection.Count > 0)
                             {
                                 System.Security.Cryptography.X509Certificates.X509Certificate2 certificate = certificateCollection[0];
 
                                 strResponseData = HttpWebManager.ScrapeHelper.DoLogin(
-                                    new Uri("https://b2b.telfort.nl/boss/"),
+                                    new Uri("https://b2b.nnn.nl/boss/"),
                                     "",
                                     "",
                                     ref cookies,
@@ -74,7 +58,7 @@ namespace HttpWebManager
                                 dictPostData.Add("loginType", "");
 
                                 strResponseData = HttpWebManager.ScrapeHelper.DoPostPage(
-                                    new Uri("https://b2b.telfort.nl/boss/post.do"),
+                                    new Uri("https://b2b.nnn.nl/boss/post.do"),
                                     cookies,
                                     strResponseData,
                                     dictPostData,
@@ -84,7 +68,7 @@ namespace HttpWebManager
                                     );
 
                                 strResponseData = HttpWebManager.ScrapeHelper.DoGetPage(
-                                    new Uri("https://b2b.telfort.nl/ca/loginbox.do?service=https%3A%2F%2Fmijn.telfort.nl%2Fboss&continue=Frameset.jsp"),
+                                    new Uri("https://b2b.nnn.nl/ca/loginbox.do?service=https%3A%2F%2Fmijn.nnn.nl%2Fboss&continue=Frameset.jsp"),
                                     cookies,
                                     "",
                                     "",
@@ -98,7 +82,7 @@ namespace HttpWebManager
                                 dictPostData.Add("password", strLoginPassword);
 
                                 strResponseData = HttpWebManager.ScrapeHelper.DoPostPage(
-                                    new Uri("https://b2b.telfort.nl/ca/POST.do"),
+                                    new Uri("https://b2b.nnn.nl/ca/POST.do"),
                                     cookies,
                                     strResponseData,
                                     dictPostData,
@@ -117,7 +101,7 @@ namespace HttpWebManager
                                     dictPostData.Add("SAMLart", "");
 
                                     strResponseData = HttpWebManager.ScrapeHelper.DoPostPage(
-                                        new Uri("https://b2b.telfort.nl/boss/post.do"),
+                                        new Uri("https://b2b.nnn.nl/boss/post.do"),
                                         cookies,
                                         strResponseData,
                                         dictPostData,
@@ -129,7 +113,7 @@ namespace HttpWebManager
                                     if (strResponseData.Contains("Dit account is aangemeld op een andere locatie"))
                                     {
                                         strResponseData = HttpWebManager.ScrapeHelper.DoGetPage(
-                                            new Uri("https://b2b.telfort.nl/boss/repeatLogin.do?actionFlag=login&loginPage=Frameset.jsp&loginRepeatFlag=1&operId=" + strLoginUserName),
+                                            new Uri("https://b2b.nnn.nl/boss/repeatLogin.do?actionFlag=login&loginPage=Frameset.jsp&loginRepeatFlag=1&operId=" + strLoginUserName),
                                             cookies,
                                             "",
                                             "",
@@ -138,7 +122,7 @@ namespace HttpWebManager
                                     }
 
                                     strResponseData = ScrapeHelper.DoGetPage(
-                                        new Uri("https://b2b.telfort.nl/custcare/cc_common/commonLoginAction.do?method=initPage&loadmode=loginboss&lang=nl_NL"),
+                                        new Uri("https://b2b.nnn.nl/custcare/cc_common/commonLoginAction.do?method=initPage&loadmode=loginboss&lang=nl_NL"),
                                         cookies,
                                         "",
                                         "",
@@ -149,7 +133,7 @@ namespace HttpWebManager
 
                                     if (!String.IsNullOrEmpty(strUrl))
                                     {
-                                        strUrl = "https://b2b.telfort.nl" + strUrl;
+                                        strUrl = "https://b2b.nnn.nl" + strUrl;
 
                                         if (Uri.IsWellFormedUriString(strUrl, UriKind.RelativeOrAbsolute))
                                         {
@@ -206,7 +190,7 @@ namespace HttpWebManager
                                     dictPostData.Add("secondLoginType", "");
 
                                     strResponseData = HttpWebManager.ScrapeHelper.DoPostPage(
-                                        new Uri("https://b2b.telfort.nl/custcare/cc_common/commonLoginAction.do?method=showCustomerList4Dealer"),
+                                        new Uri("https://b2b.nnn.nl/custcare/cc_common/commonLoginAction.do?method=showCustomerList4Dealer"),
                                         cookies,
                                         strResponseData,
                                         dictPostData,
@@ -218,7 +202,7 @@ namespace HttpWebManager
                                     string strCustomerId = ScrapeHelper.ExtractValue(strResponseData, "loginBy('", "'");
 
                                     strResponseData = ScrapeHelper.DoGetPage(
-                                       new Uri(string.Format("https://b2b.telfort.nl/custcare/cc_common/CustomerInfoAction.do?act=qryCustomerInfo&ONLYLOGIN=onlyLogin&&loginLevel=1&checkPassword=1&authType=AuthTypeCustID&objectID={0}&loginMsisdn={1}", strCustomerId, objRetentionInfo.MobileNumber)),
+                                       new Uri(string.Format("https://b2b.nnn.nl/custcare/cc_common/CustomerInfoAction.do?act=qryCustomerInfo&ONLYLOGIN=onlyLogin&&loginLevel=1&checkPassword=1&authType=AuthTypeCustID&objectID={0}&loginMsisdn={1}", strCustomerId, objRetentionInfo.MobileNumber)),
                                        cookies,
                                        "",
                                        "",
@@ -226,7 +210,7 @@ namespace HttpWebManager
                                        );
 
                                     strResponseData = ScrapeHelper.DoGetPage(
-                                        new Uri("https://b2b.telfort.nl/custcare/custsvc/servicequery/customerInfoQuery/showCustomerInfo.do?method=initForLogin"),
+                                        new Uri("https://b2b.nnn.nl/custcare/custsvc/servicequery/customerInfoQuery/showCustomerInfo.do?method=initForLogin"),
                                         cookies,
                                         "",
                                         "",
@@ -236,7 +220,7 @@ namespace HttpWebManager
                                     string strSubscriberId = ScrapeHelper.ExtractValue(strResponseData, "top.subsID4IPCC = \"", "\"");
 
                                     strResponseData = ScrapeHelper.DoGetPage(
-                                        new Uri(string.Format("https://b2b.telfort.nl/custcare/custsvc/servicequery/customerInfoQuery/personCustomerInfoAction.do?method=showPersonInfo&showType=showDetail&custType=PersonCustomer&selectedCustId={0}&msisdns={1}&fromloginflag=true", strCustomerId, objRetentionInfo.MobileNumber)),
+                                        new Uri(string.Format("https://b2b.nnn.nl/custcare/custsvc/servicequery/customerInfoQuery/personCustomerInfoAction.do?method=showPersonInfo&showType=showDetail&custType=PersonCustomer&selectedCustId={0}&msisdns={1}&fromloginflag=true", strCustomerId, objRetentionInfo.MobileNumber)),
                                         cookies,
                                         "",
                                         "",
@@ -247,7 +231,7 @@ namespace HttpWebManager
                                     strSegment = ScrapeHelper.ExtractValue(strSegment, "selected=\"selected\">", "</option>");
 
                                     strResponseData = ScrapeHelper.DoGetPage(
-                                        new Uri(string.Format("https://b2b.telfort.nl/custcare/custsvc/servicequery/customerInfoQuery/showSubscriberInfo.do?method=showSubInfoDetail&income=detail&act=productinfo&subscriberID={0}&fromloginflag=true&selectedCustId={1}", strSubscriberId, strCustomerId)),
+                                        new Uri(string.Format("https://b2b.nnn.nl/custcare/custsvc/servicequery/customerInfoQuery/showSubscriberInfo.do?method=showSubInfoDetail&income=detail&act=productinfo&subscriberID={0}&fromloginflag=true&selectedCustId={1}", strSubscriberId, strCustomerId)),
                                         cookies,
                                         "",
                                         "",
@@ -299,6 +283,22 @@ namespace HttpWebManager
             }
 
             return strRetentionResult;
+        }
+    }
+
+    public class RetentionCheckerInfo
+    {
+        public XpoObjects.Network Network { get; set; }
+        public string MobileNumber { get; set; }
+        public string SIMNumber { get; set; }
+        public DateTime BirthDay { get; set; }
+
+        public RetentionCheckerInfo(XpoObjects.Network Network, string MobileNumber, string SIMNumber, DateTime BirthDay)
+        {
+            this.Network = Network;
+            this.MobileNumber = MobileNumber;
+            this.SIMNumber = SIMNumber;
+            this.BirthDay = BirthDay;
         }
     }
 }
