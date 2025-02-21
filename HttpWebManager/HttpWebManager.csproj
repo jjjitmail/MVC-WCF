@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC38FF78-D726-49BB-8A36-EDBA47BFC746}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HttpWebManager</RootNamespace>
+    <AssemblyName>HttpWebManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v11.1.Linq, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XpoObjects">
+      <HintPath>..\..\..\..\DealerSite\DealerSite\XPOObjects\bin\Debug\XpoObjects.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Domain\Domain.cs" />
+    <Compile Include="Entities\Base\DelegateList.cs" />
+    <Compile Include="Entities\Base\ScrapingBase.cs" />
+    <Compile Include="Entities\HttpWebResult.cs" />
+    <Compile Include="Entities\LoginInfo.cs" />
+    <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetentionChecker.cs" />
+    <Compile Include="ScrapeHelper.cs" />
+    <Compile Include="Service References\AAS_TelfortService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\AssemblyManager.cs" />
+    <Compile Include="Manager\Base\ManagerBase.cs" />
+    <Compile Include="Manager\ControlsManager.cs" />
+    <Compile Include="Manager\ConvertManager.cs" />
+    <Compile Include="Manager\ObjectManager.cs" />
+    <Compile Include="Manager\SerializationManager.cs" />
+    <Compile Include="Manager\TypeManager.cs" />
+    <Compile Include="Controller\WebServiceController.cs" />
+    <Compile Include="Ult\Ult.cs" />
+    <Compile Include="ViewModel\Abonnement\NuAanmeldenViewModel.cs" />
+    <Compile Include="ViewModel\Abonnement\NuPre2PostViewModel.cs" />
+    <Compile Include="ViewModel\Base\TelfortViewModel.cs" />
+    <Compile Include="ViewModel\Abonnement\IsVerlengbaar.cs" />
+    <Compile Include="ViewModel\Bundels\LookupBundelViewModel.cs" />
+    <Compile Include="ViewModel\Bundels\UserBundelChoiceViewModel.cs" />
+    <Compile Include="ViewModel\Lookup\NetworkOperatorViewModel.cs" />
+    <Compile Include="ViewModel\TelfortKlantViewModel.cs" />
+    <Compile Include="ViewModel\KlantGegevens.cs" />
+    <Compile Include="ViewModel\Lookup\LookupManagerViewModel.cs" />
+    <Compile Include="ViewModel\Bundels\NewBundel.cs" />
+    <Compile Include="ViewModel\Bundels\Pre2postBundel.cs" />
+    <Compile Include="ViewModel\ProcesLookupManager.cs" />
+    <Compile Include="ViewModel\Abonnement\NuVerlengenViewModel.cs" />
+    <Compile Include="ViewModel\Bundels\VerlengenBundel.cs" />
+    <Compile Include="ViewModel\TestViewModel.cs" />
+    <Compile Include="ViewModel\WebService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Events\" />
+    <Folder Include="Extender\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Telfort_XPO_Objects\Telfort_XPO_Objects.csproj">
+      <Project>{A4C712FA-DD44-4C02-A09B-7E3E38635132}</Project>
+      <Name>Telfort_XPO_Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Telfort_Objects\Telfort_Objects.csproj">
+      <Project>{FF4F96F2-F461-4F8B-B3AE-233BFBAB3AA8}</Project>
+      <Name>Telfort_Objects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Telfort_Objects.Klant_Telfort.datasource" />
+    <None Include="Properties\DataSources\Telfort_Objects.LookupManager.datasource" />
+    <None Include="Properties\DataSources\Telfort_Objects.TelfortBundels.datasource" />
+    <None Include="Service References\AAS_TelfortService\AasTelfort.wsdl" />
+    <None Include="Service References\AAS_TelfortService\AasTelfort.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AAS_TelfortService\AasTelfort1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AAS_TelfortService\AasTelfort2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AAS_TelfortService\AasTelfort3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AAS_TelfortService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AAS_TelfortService\AasTelfort.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AAS_TelfortService\AasTelfort4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AAS_TelfortService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AAS_TelfortService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AAS_TelfortService\HttpWebManager.AAS_TelfortService.HttpWebResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AAS_TelfortService\HttpWebManager.AAS_TelfortService.LookupManager.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AAS_TelfortService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
