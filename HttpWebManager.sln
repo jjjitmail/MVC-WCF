@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpWebManager", "HttpWebManager\HttpWebManager.csproj", "{BC38FF78-D726-49BB-8A36-EDBA47BFC746}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AasTelfortSvc", "AasTelfortSvc\AasTelfortSvc.csproj", "{B9AF77B6-0534-4EE4-A60B-C68319625E65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC38FF78-D726-49BB-8A36-EDBA47BFC746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC38FF78-D726-49BB-8A36-EDBA47BFC746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC38FF78-D726-49BB-8A36-EDBA47BFC746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC38FF78-D726-49BB-8A36-EDBA47BFC746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9AF77B6-0534-4EE4-A60B-C68319625E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9AF77B6-0534-4EE4-A60B-C68319625E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9AF77B6-0534-4EE4-A60B-C68319625E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9AF77B6-0534-4EE4-A60B-C68319625E65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
