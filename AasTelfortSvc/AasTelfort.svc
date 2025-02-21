@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="NNN.Aas.Telfort.Service.AasTelfort" CodeBehind="AasTelfort.svc.cs" %>
